@@ -4,6 +4,8 @@ var readLineSync = require('readline-sync');
 
 var currHighestUser = {username:"1234", currHighScore: 4};
 
+var currentUser = readLineSync.question("Please enter your name to begin: ");
+
 console.log("Let's check how well do you know me?");
 
 
@@ -12,12 +14,13 @@ console.log("Let's check how well do you know me?");
 //},0);
 
 //setTimeout(function(){
-    var testUser = readLineSync.question("If you want to know details of current highest user, type 'HS' in terminal else hit Enter!\n");
+    var testUser = readLineSync.question("If you want to know details of current highest user, type 'HS' in terminal else hit 'Enter'!\n");
 //},0);
 
 while(testUser != ""){
     if(testUser === "HS"){
         console.log("The current highest score is " + currHighestUser.currHighScore + " by " + currHighestUser.username + " !");
+        console.log("Hit 'Enter' to exit or 'HS' to view once again.");
     }
     testUser = readLineSync.question();
 }
@@ -37,7 +40,7 @@ var question3 = {
 };
 
 var question4 = {
-    question: "What is your favorite family vacation? ", answer: "mumbai"
+    question: "What is my favorite family vacation? ", answer: "mumbai"
 };
 
 var question5 = {
@@ -62,14 +65,14 @@ var question6 = {
   console.log(question6.question + question6.answer);
   score++;
   
-  console.log("Your score is ",score);
+  console.log("Well done ",currentUser," your score is ",score);
   
   if(score > currHighestUser.currHighScore){
-    currHighestUser.username = readLineSync.question("You have the current highest score!!! Please enter your name: ");
+    currHighestUser.username = currentUser;
     currHighestUser.currHighScore = score;
 
     console.log("");
-    console.log("Congratulations " + currHighestUser.username + "! You have the highest score right now with " + currHighestUser.currHighScore + " !\n");
+    console.log("Congratulations " + currHighestUser.username + "! You have the highest score right now with " + currHighestUser.currHighScore + " points!\n");
   }
 
   // Project is done here. Below code is for testing purposes
@@ -83,15 +86,15 @@ var question6 = {
     //KeyInSelect testing
     var presidents = ["Man Mohan Singh", "Ram Nath Govind", "Prithviraj Chauhan", "Arun Jaitley"];
     var presAnswer = readLineSync.keyInSelect(presidents, "Who is the current president of India? ");
-    presAnswer--;
+
+    presAnswer++;
+
     if(presAnswer == 2){
         console.log("Your answer is correct!");
     }else if (presAnswer == 3){
         console.log("Your meme knowledge is strong.");
-    }
-    console.log(presAnswer);
+    }else console.log("Your answer is wrong!");
 
-  } 
 
   var leapYrName = readLineSync.question("Enter your name: ");
   function inputleapYr(){
@@ -120,3 +123,4 @@ var question6 = {
 
   if(isAleapYear === true) console.log("Congratulations! You were born in a leap year!!!");
   else console.log("You were not born on a leap year...")
+}
